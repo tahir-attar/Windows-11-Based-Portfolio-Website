@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <!-- NVIDIA/CUDA brand green, stylized "C" with circuit motif -->
+  <rect width="128" height="128" rx="14" fill="#1a1a1a"/>
+  <!-- Big C shape -->
+  <path d="M96 26C70 14 36 22 22 48c-13 24-4 58 20 72 22 13 54 10 70-8l-14-10c-11 13-34 15-50 5-17-10-22-34-12-51 9-17 32-25 50-18z" fill="#76b900"/>
+  <!-- CUDA text -->
+  <text x="64" y="112" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="#76b900" text-anchor="middle">CUDA</text>
+</svg>
