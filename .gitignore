@@ -69,12 +69,6 @@ pids/
 .storybook/
 storybook-static/
 
-# Build scripts
-*.js
-!jest.config.js
-!next.config.js
-!lint-staged.config.js
-
 # Local development
 .local/
 .agents/
