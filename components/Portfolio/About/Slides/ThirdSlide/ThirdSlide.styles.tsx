@@ -22,7 +22,8 @@ export const DynamicIconText = styled.p<HoverProps>`
       ? css`
           visibility: visible;
           opacity: 1;
-          animation: ${slideBottom} 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+          animation: ${slideBottom} 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+            both;
         `
       : css`
           visibility: hidden;
@@ -157,6 +158,15 @@ export const ThirdSlide = styled.div`
         display: flex;
         flex-direction: column;
         gap: 1rem;
+      }
+    }
+  }
+
+  @media ${({ theme }) => theme.media.phone} {
+    .glass-content {
+      .icon-skills-grid {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 0.35rem;
       }
     }
   }

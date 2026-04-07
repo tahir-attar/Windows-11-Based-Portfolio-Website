@@ -49,6 +49,27 @@ const Terminal = (): JSX.Element => {
     '#008B8B', // Dark Cyan
     '#AFEEEE', // Pale Turquoise
     '#7FFFD4', // Aquamarine
+    '#FFB6C1', // Light Pink
+    '#FFC0CB', // Pink
+    '#FF69B4', // Hot Pink
+    '#DB7093', // Pale Violet Red
+    '#FF7F50', // Coral
+    '#FFA07A', // Light Salmon
+    '#FFD700', // Gold
+    '#FFA500', // Orange
+    '#FFDAB9', // Peach Puff
+    '#F4A460', // Sandy Brown
+    '#ADFF2F', // Green Yellow
+    '#7CFC00', // Lawn Green
+    '#00FA9A', // Medium Spring Green
+    '#32CD32', // Lime Green
+    '#40E0D0', // Turquoise
+    '#4682B4', // Steel Blue
+    '#87CEFA', // Light Sky Blue
+    '#1E90FF', // Dodger Blue
+    '#BA55D3', // Medium Orchid
+    '#DA70D6', // Orchid
+    '#FF8C00', // Dark Orange
   ];
 
   const redirectToPortfolio = () => {
