@@ -4,7 +4,10 @@ import { requireAuth } from '../../../utils/adminAuth';
 
 const DOC_REF = adminDb.collection('portfolio_resume').doc('data');
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   if (req.method === 'GET') {
     const snap = await DOC_REF.get();
     if (!snap.exists) return res.status(404).json({ error: 'Not found' });
@@ -12,7 +15,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   if (req.method === 'PUT') {
-    if (!requireAuth(req, res)) return;
+    if (!(await requireAuth(req, res))) return;
     await DOC_REF.set(req.body, { merge: false });
     return res.status(200).json({ success: true });
   }

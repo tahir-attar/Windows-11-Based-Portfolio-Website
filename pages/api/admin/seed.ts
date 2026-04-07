@@ -13,8 +13,19 @@ const initialProjects = [
     projectMobileImg: '/assets/portfolio/orcl/oracle-cpq.webp',
     liveLink: 'https://www.oracle.com/ca-en/cx/sales/cpq',
     githubLink: '',
-    projectTechnologies: ['Javascript', 'Web Components', 'Service Workers', 'Redux'],
-    techIconNames: ['SiTypescript', 'SiJavascript', 'SiRedux', 'SiMongodb', 'SiElasticsearch'],
+    projectTechnologies: [
+      'Javascript',
+      'Web Components',
+      'Service Workers',
+      'Redux',
+    ],
+    techIconNames: [
+      'SiTypescript',
+      'SiJavascript',
+      'SiRedux',
+      'SiMongodb',
+      'SiElasticsearch',
+    ],
     slideBgColor: '#010606',
   },
   {
@@ -27,8 +38,20 @@ const initialProjects = [
     projectMobileImg: '/assets/portfolio/orcl/cxcloud.webp',
     liveLink: 'https://www.oracle.com/ca-en/cx/sales/',
     githubLink: '',
-    projectTechnologies: ['Javascript', 'JET', 'Web Components', 'Service Workers', 'Redux'],
-    techIconNames: ['SiTypescript', 'SiJavascript', 'SiRedux', 'SiMongodb', 'SiElasticsearch'],
+    projectTechnologies: [
+      'Javascript',
+      'JET',
+      'Web Components',
+      'Service Workers',
+      'Redux',
+    ],
+    techIconNames: [
+      'SiTypescript',
+      'SiJavascript',
+      'SiRedux',
+      'SiMongodb',
+      'SiElasticsearch',
+    ],
     slideBgColor: '#010606',
   },
   {
@@ -41,8 +64,21 @@ const initialProjects = [
     projectMobileImg: '/assets/portfolio/projectOne/sneakerManiacsPhone.png',
     githubLink: '',
     liveLink: 'https://sneaker-maniacs.vercel.app/',
-    projectTechnologies: ['Next.js', 'React', 'Redux', 'Mongo DB', 'Styled Components'],
-    techIconNames: ['SiTypescript', 'SiReact', 'SiNextdotjs', 'SiRedux', 'SiMongodb', 'SiStorybook'],
+    projectTechnologies: [
+      'Next.js',
+      'React',
+      'Redux',
+      'Mongo DB',
+      'Styled Components',
+    ],
+    techIconNames: [
+      'SiTypescript',
+      'SiReact',
+      'SiNextdotjs',
+      'SiRedux',
+      'SiMongodb',
+      'SiStorybook',
+    ],
     slideBgColor: '#010606',
   },
   {
@@ -56,7 +92,14 @@ const initialProjects = [
     githubLink: '',
     liveLink: 'https://optics-vps.vercel.app/',
     projectTechnologies: ['Next.js', 'React', 'Redux', 'Mongo DB', 'Express'],
-    techIconNames: ['SiTypescript', 'SiReact', 'SiNextdotjs', 'SiRedux', 'SiNodedotjs', 'SiMongodb'],
+    techIconNames: [
+      'SiTypescript',
+      'SiReact',
+      'SiNextdotjs',
+      'SiRedux',
+      'SiNodedotjs',
+      'SiMongodb',
+    ],
     slideBgColor: '#4831d4',
   },
 ];
@@ -74,31 +117,55 @@ const initialResume = {
     githubUrl: '',
     cvPdfUrl: '',
   },
-  summary: 'Accomplished, highly-qualified, and results-driven Software Engineer with proven hands-on experience in designing, building, debugging, and implementing performant and scalable web applications.',
+  summary:
+    'Accomplished, highly-qualified, and results-driven Software Engineer with proven hands-on experience in designing, building, debugging, and implementing performant and scalable web applications.',
   experienceIntro: `I've worked on a handful of projects, some of which were for the following organizations:`,
   keyTechSkills: [
-    { text: 'JavaScript', iconUrl: '/assets/portfolio/skills/javascript-original.svg' },
-    { text: 'Node.js', iconUrl: '/assets/portfolio/skills/nodejs-original.svg' },
-    { text: 'TypeScript', iconUrl: '/assets/portfolio/skills/typescript-original.svg' },
+    {
+      text: 'JavaScript',
+      iconUrl: '/assets/portfolio/skills/javascript-original.svg',
+    },
+    {
+      text: 'Node.js',
+      iconUrl: '/assets/portfolio/skills/nodejs-original.svg',
+    },
+    {
+      text: 'TypeScript',
+      iconUrl: '/assets/portfolio/skills/typescript-original.svg',
+    },
     { text: 'React', iconUrl: '/assets/portfolio/skills/react-original.svg' },
-    { text: 'Next.js', iconUrl: '/assets/portfolio/skills/nextjs-original.svg' },
+    {
+      text: 'Next.js',
+      iconUrl: '/assets/portfolio/skills/nextjs-original.svg',
+    },
   ],
   otherSkills: [
     { text: 'AWS', iconUrl: '/assets/portfolio/skills/aws.svg' },
-    { text: 'Responsive Web Design', iconUrl: '/assets/portfolio/skills/responsive.png' },
+    {
+      text: 'Responsive Web Design',
+      iconUrl: '/assets/portfolio/skills/responsive.png',
+    },
     { text: 'GitHub', iconUrl: '/assets/portfolio/skills/github-original.svg' },
     { text: 'Git', iconUrl: '/assets/portfolio/skills/git-original.svg' },
     { text: 'Figma', iconUrl: '/assets/portfolio/skills/figma-original.svg' },
   ],
   experience: [],
   education: [
-    { degree: 'Bachelor of Computer Engineering', field: 'Computer Science', institution: '' },
+    {
+      degree: 'Bachelor of Computer Engineering',
+      field: 'Computer Science',
+      institution: '',
+    },
   ],
 };
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
-  if (!requireAuth(req, res)) return;
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  if (req.method !== 'POST')
+    return res.status(405).json({ error: 'Method not allowed' });
+  if (!(await requireAuth(req, res))) return;
 
   const { target } = req.query as { target?: string };
 
@@ -106,7 +173,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const col = adminDb.collection('portfolio_projects');
     const existing = await col.get();
     if (!existing.empty) {
-      return res.status(400).json({ error: 'Projects already seeded. Delete existing docs first.' });
+      return res
+        .status(400)
+        .json({
+          error: 'Projects already seeded. Delete existing docs first.',
+        });
     }
     const batch = adminDb.batch();
     for (const project of initialProjects) {

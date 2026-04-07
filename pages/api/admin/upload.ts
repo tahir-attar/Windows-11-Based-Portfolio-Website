@@ -4,9 +4,13 @@ import { adminStorage } from '../../../utils/firebaseAdmin';
 
 export const config = { api: { bodyParser: { sizeLimit: '15mb' } } };
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (!requireAuth(req, res)) return;
-  if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  if (!(await requireAuth(req, res))) return;
+  if (req.method !== 'POST')
+    return res.status(405).json({ error: 'Method not allowed' });
 
   const { data, filename, contentType } = req.body;
   if (!data) return res.status(400).json({ error: 'No file data provided' });
@@ -17,11 +21,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const ext = ((filename as string) || 'image.jpg').split('.').pop() || 'jpg';
     const destination = `portfolio-projects/${Date.now()}.${ext}`;
 
-    const bucketName = (process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || '').replace(/^gs:\/\//, '');
+    const bucketName = (
+      process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || ''
+    ).replace(/^gs:\/\//, '');
     const bucket = adminStorage.bucket(bucketName);
     const file = bucket.file(destination);
 
-    await file.save(buffer, { metadata: { contentType: contentType || 'image/jpeg' } });
+    await file.save(buffer, {
+      metadata: { contentType: contentType || 'image/jpeg' },
+    });
     await file.makePublic();
 
     const publicUrl = `https://storage.googleapis.com/${bucket.name}/${destination}`;

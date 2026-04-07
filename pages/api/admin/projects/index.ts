@@ -2,8 +2,11 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { adminDb } from '../../../../utils/firebaseAdmin';
 import { requireAuth } from '../../../../utils/adminAuth';
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (!requireAuth(req, res)) return;
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  if (!(await requireAuth(req, res))) return;
 
   const col = adminDb.collection('portfolio_projects');
 

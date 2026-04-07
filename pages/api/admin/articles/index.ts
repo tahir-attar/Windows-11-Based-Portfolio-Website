@@ -6,7 +6,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (!requireAuth(req, res)) return;
+  if (!(await requireAuth(req, res))) return;
 
   const col = adminDb.collection('portfolio_articles');
 
