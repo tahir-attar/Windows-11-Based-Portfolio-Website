@@ -9,7 +9,9 @@ import Iframe from '../../Iframe/Iframe';
 const VsCode = (): JSX.Element => {
   return (
     <Iframe
-      iframeSrc={'https://github1s.com/tahir-attar/Sentimental-Analysis-of-Airline-Reviews'}
+      iframeSrc={
+        'https://github1s.com/tahir-attar/Windows-11-Based-Portfolio-Website'
+      }
       iframeSize={{ width: '100%', height: '100%' }}
       title={'VS Code'}
       style={{

@@ -12,6 +12,10 @@ import * as Styled from './Terminal.styles';
  */
 
 const Terminal = (): JSX.Element => {
+  const TerminalComponent = Trmnl as React.ComponentType<
+    Record<string, unknown>
+  >;
+
   const {
     openVSCode,
     openGoogle,
@@ -56,9 +60,24 @@ const Terminal = (): JSX.Element => {
     return 'Opening projects...';
   };
 
+  const commandDescriptions = {
+    clear: 'clears terminal output',
+    help: 'lists all available commands',
+    show: 'shows the terminal welcome message',
+    code: 'opens Visual Studio Code',
+    portfolio: 'opens portfolio page',
+    projects: 'opens portfolio projects page',
+    google: 'opens Google search',
+    resume: 'opens resume link',
+    popup: 'shows a popup alert',
+    hack: 'runs playful hack simulation output',
+    changecolor: 'changes terminal to a random color',
+    SECRET_COMMAND: `💀  DON'T USE THIS COMMAND! OR YOU WILL BE FIRED!  💀`,
+  };
+
   return (
     <Styled.Container terminalColor={terminalColor}>
-      <Trmnl
+      <TerminalComponent
         hideTopBar
         color={terminalColor}
         backgroundColor="#010606"
@@ -70,7 +89,6 @@ const Terminal = (): JSX.Element => {
           code: () => openVSCode(),
           google: () => openGoogle(),
           resume: () => openResume(),
-          showmsg: () => greetingMessage,
           hack: () => hack,
           popup: () => alert('hello'),
           portfolio: redirectToPortfolio,
@@ -86,19 +104,8 @@ const Terminal = (): JSX.Element => {
             return sad;
           },
         }}
-        description={{
-          code: 'opens Visual Studio Code',
-          portfolio: 'open portfolio',
-          projects: 'open recent projects',
-          google: 'opens Google search',
-          resume: 'opens resume',
-          alert: 'alert',
-          popup: 'alert',
-          showmsg: 'will show greeting message',
-          hack: 'hack wifi of annoying neighbors',
-          changecolor: 'change terminal to a random color',
-          SECRET_COMMAND: `💀  DON'T USE THIS COMMAND! OR YOU WILL BE FIRED!  💀`,
-        }}
+        description={commandDescriptions}
+        descriptions={commandDescriptions}
         msg={greetingMessage}
       />
     </Styled.Container>
