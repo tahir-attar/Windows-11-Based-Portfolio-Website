@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import { Props } from './Loader';
 
+interface ScrollTextProps {
+  loadingDuration: number;
+}
+
 export const Container = styled.section<Props>`
   position: fixed;
   top: 0;
@@ -43,7 +47,7 @@ export const TextContainer = styled.div`
   overflow: hidden;
 `;
 
-export const ScrollText = styled.div`
+export const ScrollText = styled.div<ScrollTextProps>`
   height: 100%;
   text-align: center;
   font-size: 2rem;
@@ -52,7 +56,9 @@ export const ScrollText = styled.div`
   transform: translateZ(0);
 
   transform: translateY(100%);
-  animation: my-animation 6s linear;
+  animation: my-animation
+    ${({ loadingDuration }) => `${Math.max(800, loadingDuration - 900)}ms`}
+    linear;
   animation-delay: 700ms;
 
   @keyframes my-animation {

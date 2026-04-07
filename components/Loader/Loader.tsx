@@ -29,7 +29,7 @@ const Loader = ({ isOnScreen, loadingDuration }: Props): JSX.Element => {
     <Styled.Container isOnScreen={isOnScreen} loadingDuration={loadingDuration}>
       <Logo isExpanded={isLogoExpanded} />
       <Styled.TextContainer>
-        <Styled.ScrollText>
+        <Styled.ScrollText loadingDuration={loadingDuration}>
           <span style={{ color: '#3776AB' }}>Python</span> <br />
           <span style={{ color: '#FF6F61' }}>Machine Learning</span> <br />
           <span style={{ color: '#00A4EF' }}>AI</span> <br />
