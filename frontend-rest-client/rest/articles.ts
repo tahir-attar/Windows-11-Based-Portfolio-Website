@@ -11,8 +11,13 @@ export { getAllLatestArticles };
  */
 const getAllLatestArticles = (): Promise<AxiosResponse<DevToApiResponse>> => {
   const isServer = typeof window === 'undefined';
-  const baseUrl = isServer ? 'http://127.0.0.1:5000' : '';
-  
+  const baseUrl = isServer
+    ? process.env.NEXT_PUBLIC_SITE_URL ||
+      (process.env.VERCEL_URL
+        ? `https://${process.env.VERCEL_URL}`
+        : 'http://127.0.0.1:5000')
+    : '';
+
   return makeRequest({
     url: `${baseUrl}/api/articles`,
     method: 'GET',
