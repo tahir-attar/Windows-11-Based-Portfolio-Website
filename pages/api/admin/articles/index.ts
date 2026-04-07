@@ -2,7 +2,10 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { adminDb } from '../../../../utils/firebaseAdmin';
 import { requireAuth } from '../../../../utils/adminAuth';
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   if (!requireAuth(req, res)) return;
 
   const col = adminDb.collection('portfolio_articles');
@@ -17,6 +20,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const countSnap = await col.count().get();
     const order = countSnap.data().count;
     const docRef = await col.add({ ...req.body, order });
+    try {
+      await res.revalidate('/articles');
+    } catch (error) {
+      console.warn('[admin/articles] Revalidate failed for /articles:', error);
+    }
     return res.status(201).json({ id: docRef.id });
   }
 
