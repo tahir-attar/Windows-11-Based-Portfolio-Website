@@ -31,33 +31,41 @@ const Home: NextPage<ServerProps> = ({ title }) => {
   const [isLoading, setIsLoading] = useState(shouldIntroBeShown);
   const [isMounted, setIsMounted] = useState(false);
   const { notShowIntroAgain } = useActions();
-  const LOADING_INTRO_DURATION = 6000;
+  const LOADING_INTRO_DURATION = 4200;
 
   useEffect(() => {
     setIsMounted(true);
-    setTimeout(() => {
+    if (!shouldIntroBeShown) {
+      setIsLoading(false);
+      return;
+    }
+
+    const timeoutId = window.setTimeout(() => {
       notShowIntroAgain();
       setIsLoading(false);
     }, LOADING_INTRO_DURATION);
-  }, []);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+    };
+  }, [LOADING_INTRO_DURATION, notShowIntroAgain, shouldIntroBeShown]);
 
   const showMobile = isMounted && isOnMobile;
 
   return (
     <>
       <Loader isOnScreen={isLoading} loadingDuration={LOADING_INTRO_DURATION} />
-      {showMobile ? (
-        <PortfolioLayout title={'Tahir Attar | AI-Driven Development & Web Solutions'}>
+      {!isLoading && showMobile ? (
+        <PortfolioLayout
+          title={'Tahir Attar | AI-Driven Development & Web Solutions'}
+        >
           <PortfolioLanding />
         </PortfolioLayout>
-      ) : (
-        <DesktopLayout
-          title={title}
-          entranceAnimationDelay={LOADING_INTRO_DURATION + 200}
-        >
+      ) : !isLoading ? (
+        <DesktopLayout title={title} entranceAnimationDelay={200}>
           <Desktop />
         </DesktopLayout>
-      )}
+      ) : null}
     </>
   );
 };
