@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../utils/firebaseClient';
 
 const S = {
   page: {
@@ -71,20 +73,61 @@ const S = {
 };
 
 export default function AdminLogin() {
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+
+  const getReadableAuthError = (err: any): string => {
+    const code = err?.code as string | undefined;
+
+    if (
+      code === 'auth/invalid-credential' ||
+      code === 'auth/invalid-login-credentials'
+    ) {
+      return 'Invalid email/password or Firebase project mismatch. Verify the user exists in this Firebase project and Email/Password sign-in is enabled.';
+    }
+
+    if (code === 'auth/user-not-found') {
+      return 'No user found with this email in Firebase Authentication.';
+    }
+
+    if (code === 'auth/wrong-password') {
+      return 'Incorrect password.';
+    }
+
+    if (code === 'auth/invalid-email') {
+      return 'Email format is invalid.';
+    }
+
+    if (code === 'auth/operation-not-allowed') {
+      return 'Email/Password login is disabled in Firebase Authentication settings.';
+    }
+
+    if (code === 'auth/too-many-requests') {
+      return 'Too many login attempts. Please wait a bit and try again.';
+    }
+
+    return err?.message || 'Authentication failed. Please try again.';
+  };
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setLoading(true);
     setError('');
     try {
+      const userCred = await signInWithEmailAndPassword(
+        auth,
+        email.trim(),
+        password
+      );
+      const idToken = await userCred.user.getIdToken();
+
       const res = await fetch('/api/admin/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ password }),
+        body: JSON.stringify({ idToken }),
       });
       if (res.ok) {
         router.push('/admin/projects');
@@ -92,8 +135,8 @@ export default function AdminLogin() {
         const data = await res.json();
         setError(data.error || 'Login failed');
       }
-    } catch {
-      setError('Network error. Please try again.');
+    } catch (err: any) {
+      setError(getReadableAuthError(err));
     } finally {
       setLoading(false);
     }
@@ -112,6 +155,16 @@ export default function AdminLogin() {
           <p style={S.sub}>Admin Panel · Sign in to continue</p>
 
           <form onSubmit={handleSubmit}>
+            <label style={S.label}>Email</label>
+            <input
+              style={S.input}
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Enter admin email"
+              autoFocus
+            />
+
             <label style={S.label}>Password</label>
             <input
               style={S.input}
@@ -119,7 +172,6 @@ export default function AdminLogin() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter admin password"
-              autoFocus
             />
             {error && <p style={S.error}>{error}</p>}
             <button style={S.btn} type="submit" disabled={loading}>
