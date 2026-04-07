@@ -17,21 +17,25 @@ export interface Props {
 const Loader = ({ isOnScreen, loadingDuration }: Props): JSX.Element => {
   const [isLogoExpanded, setIsLogoExpanded] = useState(true);
   useEffect(() => {
-    setTimeout(() => {
+    const timeoutId = window.setTimeout(() => {
       setIsLogoExpanded(false);
     }, loadingDuration - 1000);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+    };
   }, [loadingDuration]);
   return (
     <Styled.Container isOnScreen={isOnScreen} loadingDuration={loadingDuration}>
       <Logo isExpanded={isLogoExpanded} />
       <Styled.TextContainer>
         <Styled.ScrollText>
-          <span style={ { color: '#3776AB' } }>Python</span> <br />
-          <span style={ { color: '#FF6F61' } }>Machine Learning</span> <br />
-          <span style={ { color: '#00A4EF' } }>AI</span> <br />
-          <span style={ { color: '#61DAFB' } }>React</span> <br />
-          <span style={ { color: '#F7DF1E' } }>Web Development</span> <br />
-          <span style={ { color: '#FFFFFF' } }>Guitar 🎸</span>
+          <span style={{ color: '#3776AB' }}>Python</span> <br />
+          <span style={{ color: '#FF6F61' }}>Machine Learning</span> <br />
+          <span style={{ color: '#00A4EF' }}>AI</span> <br />
+          <span style={{ color: '#61DAFB' }}>React</span> <br />
+          <span style={{ color: '#F7DF1E' }}>Web Development</span> <br />
+          <span style={{ color: '#FFFFFF' }}>Guitar 🎸</span>
         </Styled.ScrollText>
       </Styled.TextContainer>
     </Styled.Container>
