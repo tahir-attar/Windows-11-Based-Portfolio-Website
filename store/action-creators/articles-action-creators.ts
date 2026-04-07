@@ -34,9 +34,12 @@ const loadLatestArticles = () => {
       });
     } catch (error: any) {
       if (axios.isAxiosError(error)) {
+        const safeErrorMessage = error.response
+          ? `Request failed with status ${error.response.status}`
+          : error.message || 'Unknown error';
         dispatch({
           type: ArticlesReducerActionTypes.DEV_TO_ARTICLES_LOAD_ERROR,
-          payload: error.response ? JSON.stringify(error.response) : error.message || 'Unknown error',
+          payload: safeErrorMessage,
         });
       } else {
         dispatch({
