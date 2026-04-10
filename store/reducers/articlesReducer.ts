@@ -8,7 +8,7 @@ const initialNewsState: ArticlesReducerState = {
   articles: [],
   areArticlesLoading: false,
   filterOptions: [],
-  sortArticlesBy: 'date',
+  sortArticlesBy: null,
   error: null,
 };
 
@@ -37,6 +37,14 @@ export const articlesReducer = (
       return {
         ...state,
         filterOptions: [...state.filterOptions, action.payload],
+      };
+
+    case ArticlesReducerActionTypes.REMOVE_FILTER_OPTION:
+      return {
+        ...state,
+        filterOptions: state.filterOptions.filter(
+          (filterOption) => filterOption !== action.payload
+        ),
       };
 
     case ArticlesReducerActionTypes.APPLY_SORTING_PARAM:

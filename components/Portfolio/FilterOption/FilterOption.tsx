@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import * as Styled from './FilterOption.styles';
 import { ArticleSortingOption } from '../../../types/redux/articles-reducer-types';
 
@@ -7,11 +7,13 @@ export type Props =
       variant: 'sortingOption';
       sortingTag: ArticleSortingOption;
       action: (sortingOption: ArticleSortingOption) => void;
+      isActive: boolean;
     }
   | {
       variant: 'filterOption';
       filterTag: string;
       action: (filterOption: string) => void;
+      isActive: boolean;
     };
 
 /**
@@ -24,16 +26,13 @@ export type Props =
  *@returns {JSX.Element} - Rendered FilterOption component
  */
 const FilterOption: React.FunctionComponent<Props> = (props): JSX.Element => {
-  const [isActive, setIsActive] = useState<boolean>(false);
-
   const handleClick = () => {
     if (props.variant === 'sortingOption') props.action(props.sortingTag);
     if (props.variant === 'filterOption') props.action(props.filterTag);
-    setIsActive((prev) => !prev);
   };
 
   return (
-    <Styled.Container isActive={isActive} onClick={handleClick}>
+    <Styled.Container isActive={props.isActive} onClick={handleClick}>
       {props.children}
     </Styled.Container>
   );

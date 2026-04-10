@@ -21,7 +21,9 @@ const ArticleFiltersMenu = ({ isMenuVisible }: Props): JSX.Element => {
   const { addFilterOption, removeFilterOption, applySortingOption } =
     useActions();
   const { allTags, allSortingOptions } = useArticleFiltersMenuConfig();
-  const { filterOptions } = useTypedSelector((state) => state.articles);
+  const { filterOptions, sortArticlesBy } = useTypedSelector(
+    (state) => state.articles
+  );
 
   const handleApplyFiltering = (filterOption: string): void => {
     if (filterOptions.includes(filterOption)) {
@@ -32,7 +34,7 @@ const ArticleFiltersMenu = ({ isMenuVisible }: Props): JSX.Element => {
   };
 
   const handleApplySorting = (sortingOption: ArticleSortingOption): void => {
-    applySortingOption(sortingOption);
+    applySortingOption(sortArticlesBy === sortingOption ? null : sortingOption);
   };
 
   return (
@@ -48,6 +50,7 @@ const ArticleFiltersMenu = ({ isMenuVisible }: Props): JSX.Element => {
               key={tag + id}
               action={handleApplyFiltering}
               filterTag={tag}
+              isActive={filterOptions.includes(tag)}
             >
               {tag}
             </FilterOption>
@@ -64,6 +67,7 @@ const ArticleFiltersMenu = ({ isMenuVisible }: Props): JSX.Element => {
               variant={'sortingOption'}
               sortingTag={sortingTag}
               action={() => handleApplySorting(sortingTag)}
+              isActive={sortArticlesBy === sortingTag}
             >
               {sortingTag}
             </FilterOption>

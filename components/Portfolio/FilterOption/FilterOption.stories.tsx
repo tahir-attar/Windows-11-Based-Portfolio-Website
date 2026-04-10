@@ -12,5 +12,6 @@ export const Primary = Template.bind({});
 Primary.args = {
   variant: 'filterOption',
   filterTag: 'typescript',
+  isActive: false,
   action: () => console.log('cool'),
 };

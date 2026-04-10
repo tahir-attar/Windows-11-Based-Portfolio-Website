@@ -45,10 +45,6 @@ const About = (): JSX.Element => {
 
       {/*   THIRD SLIDE   */}
       <ThirdSlide />
-      <WaveDivider
-        waveImg={'/assets/portfolio/blob-1.svg'}
-        dividerHeight={'200px'}
-      />
       {/*   FOURTH SLIDE — hidden   */}
       {/* <FourthSlide />
       <WaveDivider

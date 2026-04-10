@@ -55,7 +55,7 @@ export const mockReduxStore: LocalRootState = {
     articles: [],
     areArticlesLoading: false,
     filterOptions: [],
-    sortArticlesBy: 'date',
+    sortArticlesBy: null,
     error: null,
   },
 };

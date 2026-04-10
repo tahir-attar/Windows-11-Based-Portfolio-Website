@@ -22,12 +22,13 @@ export interface IDevToArticle {
 export type DevToApiResponse = Array<IDevToArticle>;
 
 export type ArticleSortingOption = 'date' | 'likes' | 'views';
+export type ActiveArticleSortingOption = ArticleSortingOption | null;
 
 export interface ArticlesReducerState {
   articles: IDevToArticle[];
   areArticlesLoading: boolean;
   filterOptions: string[];
-  sortArticlesBy: ArticleSortingOption;
+  sortArticlesBy: ActiveArticleSortingOption;
   error: null | string;
 }
 
@@ -56,5 +57,5 @@ export type ArticlesReducerAction =
   | { type: ArticlesReducerActionTypes.REMOVE_FILTER_OPTION; payload: string }
   | {
       type: ArticlesReducerActionTypes.APPLY_SORTING_PARAM;
-      payload: ArticleSortingOption;
+      payload: ActiveArticleSortingOption;
     };

@@ -2,7 +2,7 @@ import axios from 'axios';
 import { Dispatch } from 'redux';
 import { getAllLatestArticles } from '../../frontend-rest-client/rest/articles';
 import {
-  ArticleSortingOption,
+  ActiveArticleSortingOption,
   ArticlesReducerAction,
   ArticlesReducerActionTypes,
 } from '../../types/redux/articles-reducer-types';
@@ -79,7 +79,7 @@ const removeFilterOption = (filterOption: string): ArticlesReducerAction => ({
  */
 
 const applySortingOption = (
-  sortingOption: ArticleSortingOption
+  sortingOption: ActiveArticleSortingOption
 ): ArticlesReducerAction => ({
   type: ArticlesReducerActionTypes.APPLY_SORTING_PARAM,
   payload: sortingOption,

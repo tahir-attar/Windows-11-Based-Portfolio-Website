@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import * as Styled from './SixthSlide.styles';
 import SectionHeader from '../../../Typography/SectionHeader/SectionHeader';
 import PortfolioParagraph from '../../../Typography/PortfolioParagraph/PortfolioParagraph';
@@ -14,14 +14,26 @@ import { useRouter } from 'next/router';
  */
 const SixthSlide = (): JSX.Element => {
   const router = useRouter();
+
+  useEffect(() => {
+    router.prefetch('/portfolio/projects');
+    router.prefetch('/articles');
+  }, [router]);
+
   const redirectToProjects = () => {
     router.push('/portfolio/projects');
   };
+
   const redirectToArticles = () => {
     router.push('/articles');
   };
   return (
-    <Slide bgColor={'#010606'} height={'100vh'} anchorID={'sixth-slide'} snapAlign={'end'}>
+    <Slide
+      bgColor={'#010606'}
+      height={'100vh'}
+      anchorID={'sixth-slide'}
+      snapAlign={'end'}
+    >
       <Styled.SixthSlide>
         <div className="left-column">
           <div className="content-wrapper">

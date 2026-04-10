@@ -14,6 +14,7 @@ const setup = () => {
     <FilterOption
       action={mockAction}
       filterTag={'TOMATO'}
+      isActive={false}
       variant={'filterOption'}
     >
       {'FOO'}
