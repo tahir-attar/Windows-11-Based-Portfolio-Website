@@ -7,7 +7,6 @@ import {
   FiGlobe,
   FiMail,
   FiPhoneOutgoing,
-  FiZoomIn,
 } from 'react-icons/fi';
 import { SiLinkedin } from 'react-icons/si';
 import PortfolioParagraph from '../Typography/PortfolioParagraph/PortfolioParagraph';
@@ -19,7 +18,7 @@ import { IResumeData } from '../../../types/portfolio';
 const Resume = (): JSX.Element => {
   const [data, setData] = useState<IResumeData | null>(null);
   const [loading, setLoading] = useState(true);
-  const [zoomIn, setZoomIn] = useState(false);
+  const [zoomIn] = useState(false);
   useEffect(() => {
     fetch('/api/admin/resume')
       .then((r) => (r.ok ? r.json() : null))
@@ -77,7 +76,11 @@ const Resume = (): JSX.Element => {
               </Styled.ContactLink>
             )}
             {pi.email && (
-              <Styled.ContactLink href={`mailto:${pi.email}`}>
+              <Styled.ContactLink
+                href={`mailto:${pi.email}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <FiMail />
                 {pi.email}
               </Styled.ContactLink>
@@ -164,7 +167,11 @@ const Resume = (): JSX.Element => {
                 </Styled.SocialMediaLink>
               )}
               {pi.email && (
-                <Styled.SocialMediaLink href={`mailto:${pi.email}`}>
+                <Styled.SocialMediaLink
+                  href={`mailto:${pi.email}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <FiMail className={'social-media-icon'} />
                   Email
                 </Styled.SocialMediaLink>
@@ -180,18 +187,6 @@ const Resume = (): JSX.Element => {
                   <FiDownload className={'social-media-icon'} />
                   Download CV
                 </Styled.SocialMediaLink>
-              )}
-
-              {!zoomIn && (
-                <Styled.ZoomToggleButton
-                  type="button"
-                  onClick={() => setZoomIn(true)}
-                  aria-label="Zoom in resume"
-                  title="Zoom in"
-                >
-                  <FiZoomIn />
-                  Zoom in
-                </Styled.ZoomToggleButton>
               )}
             </Styled.SocialLinksWrapper>
 
