@@ -1,29 +1,39 @@
 import styled from 'styled-components';
 
+interface ResumeWrapperProps {
+  $zoomIn?: boolean;
+}
+
 export const Container = styled.section`
   min-height: 100vh;
   background-color: #ffffff;
   color: ${({ theme }) => theme.portfolio.resumeColors.darkText};
   display: flex;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: flex-start;
   font-style: initial;
   padding: 3rem 1rem;
-  overflow-x: hidden;
+  overflow-x: auto;
+
+  @media (min-width: 1240px) {
+    justify-content: center;
+  }
 `;
 
-export const ResumeWrapper = styled.div`
+export const ResumeWrapper = styled.div<ResumeWrapperProps>`
   background-color: ${({ theme }) => theme.portfolio.resumeColors.bgColor};
   padding: 2rem;
-  width: 100%;
+  width: 1200px;
+  min-width: 1200px;
   max-width: 1200px;
   display: flex;
   gap: 2rem;
+  flex-shrink: 0;
+  transform-origin: top left;
+  transition: transform 0.2s ease;
 
-  @media (max-width: 768px) {
-    flex-direction: column;
-    padding: 1rem;
-    gap: 1.5rem;
+  @media (max-width: 1240px) {
+    transform: ${({ $zoomIn }) => ($zoomIn ? 'scale(1)' : 'scale(0.82)')};
   }
 `;
 
@@ -39,11 +49,6 @@ export const LeftColumn = styled.aside`
 
   h3 {
     color: ${({ theme }) => theme.portfolio.resumeColors.accentColor};
-  }
-
-  @media (max-width: 768px) {
-    width: 100%;
-    padding: 0;
   }
 `;
 
@@ -69,10 +74,6 @@ export const ContactLink = styled.a`
 export const RightColumn = styled.section`
   width: 70%;
   min-width: 0;
-
-  @media (max-width: 768px) {
-    width: 100%;
-  }
 `;
 
 export const SummaryHeader = styled.header``;
@@ -87,11 +88,6 @@ export const Name = styled.h1`
 
   .suffix {
     color: #1a1a1a;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 2.5rem;
-    letter-spacing: -2px;
   }
 `;
 
@@ -110,11 +106,6 @@ export const SocialLinksWrapper = styled.div`
   gap: 2rem;
   margin-top: 1rem;
   flex-wrap: wrap;
-
-  @media (max-width: 480px) {
-    gap: 0.5rem;
-    flex-direction: column;
-  }
 `;
 
 export const SocialMediaLink = styled.a`
@@ -127,6 +118,28 @@ export const SocialMediaLink = styled.a`
     color: ${({ theme }) => theme.portfolio.resumeColors.accentColor};
     margin-right: 0.25rem;
     font-size: 1.25rem;
+  }
+`;
+
+export const ZoomToggleButton = styled.button`
+  display: none;
+  align-items: center;
+  gap: 0.35rem;
+  border: 1px solid ${({ theme }) => theme.portfolio.resumeColors.accentColor};
+  background: transparent;
+  color: ${({ theme }) => theme.portfolio.resumeColors.accentColor};
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+
+  &:hover {
+    opacity: 0.85;
+  }
+
+  @media (max-width: 1240px) {
+    display: inline-flex;
   }
 `;
 

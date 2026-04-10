@@ -7,6 +7,7 @@ import {
   FiGlobe,
   FiMail,
   FiPhoneOutgoing,
+  FiZoomIn,
 } from 'react-icons/fi';
 import { SiLinkedin } from 'react-icons/si';
 import PortfolioParagraph from '../Typography/PortfolioParagraph/PortfolioParagraph';
@@ -15,11 +16,10 @@ import Certification from '../Certification/Certification';
 import Link from 'next/link';
 import { IResumeData } from '../../../types/portfolio';
 
-
-
 const Resume = (): JSX.Element => {
   const [data, setData] = useState<IResumeData | null>(null);
   const [loading, setLoading] = useState(true);
+  const [zoomIn, setZoomIn] = useState(false);
   useEffect(() => {
     fetch('/api/admin/resume')
       .then((r) => (r.ok ? r.json() : null))
@@ -46,7 +46,10 @@ const Resume = (): JSX.Element => {
         <Styled.ResumeWrapper>
           <p style={{ color: '#888', padding: '2rem' }}>
             Resume data not found. Please set it up in the admin panel at{' '}
-            <a href="/admin" style={{ color: '#2bff88' }}>/admin</a>.
+            <a href="/admin" style={{ color: '#2bff88' }}>
+              /admin
+            </a>
+            .
           </p>
         </Styled.ResumeWrapper>
       </Styled.Container>
@@ -60,11 +63,15 @@ const Resume = (): JSX.Element => {
 
   return (
     <Styled.Container>
-      <Styled.ResumeWrapper>
+      <Styled.ResumeWrapper $zoomIn={zoomIn}>
         <Styled.LeftColumn>
           <Styled.ContactInfo>
             {pi.website && (
-              <Styled.ContactLink href={pi.website} target="_blank" rel="noopener">
+              <Styled.ContactLink
+                href={pi.website}
+                target="_blank"
+                rel="noopener"
+              >
                 <FiGlobe />
                 {pi.website.replace(/^https?:\/\//, '')}
               </Styled.ContactLink>
@@ -94,18 +101,23 @@ const Resume = (): JSX.Element => {
             />
           )}
 
-          {(data.nonTechSkills || []).length > 0 && (() => {
-            const flatSkills = (data.nonTechSkills || []).flatMap((group) =>
-              group.items.map((item) => ({ text: item, iconUrl: group.iconUrl || '/assets/portfolio/bullets/check.svg' }))
-            );
-            return flatSkills.length > 0 ? (
-              <TextList
-                variant={'withHeader'}
-                textBulletPoints={flatSkills}
-                headerText={'Non-Technical Skills'}
-              />
-            ) : null;
-          })()}
+          {(data.nonTechSkills || []).length > 0 &&
+            (() => {
+              const flatSkills = (data.nonTechSkills || []).flatMap((group) =>
+                group.items.map((item) => ({
+                  text: item,
+                  iconUrl:
+                    group.iconUrl || '/assets/portfolio/bullets/check.svg',
+                }))
+              );
+              return flatSkills.length > 0 ? (
+                <TextList
+                  variant={'withHeader'}
+                  textBulletPoints={flatSkills}
+                  headerText={'Non-Technical Skills'}
+                />
+              ) : null;
+            })()}
 
           {(data.hobbies || []).length > 0 && (
             <TextList
@@ -120,20 +132,33 @@ const Resume = (): JSX.Element => {
           <Styled.SummaryHeader>
             <Styled.Name>
               {firstName}
-              {lastName && <> <span className="last">{lastName}</span></>}
+              {lastName && (
+                <>
+                  {' '}
+                  <span className="last">{lastName}</span>
+                </>
+              )}
               {pi.suffix && <span className="suffix">, {pi.suffix}</span>}
             </Styled.Name>
             {pi.title && <Styled.Title>{pi.title}</Styled.Title>}
 
             <Styled.SocialLinksWrapper>
               {pi.linkedinUrl && (
-                <Styled.SocialMediaLink href={pi.linkedinUrl} target={'_blank'} rel="noopener">
+                <Styled.SocialMediaLink
+                  href={pi.linkedinUrl}
+                  target={'_blank'}
+                  rel="noopener"
+                >
                   <SiLinkedin className={'social-media-icon'} />
                   LinkedIn
                 </Styled.SocialMediaLink>
               )}
               {pi.githubUrl && (
-                <Styled.SocialMediaLink href={pi.githubUrl} target={'_blank'} rel="noopener">
+                <Styled.SocialMediaLink
+                  href={pi.githubUrl}
+                  target={'_blank'}
+                  rel="noopener"
+                >
                   <FiGithub className={'social-media-icon'} />
                   GitHub
                 </Styled.SocialMediaLink>
@@ -155,6 +180,18 @@ const Resume = (): JSX.Element => {
                   <FiDownload className={'social-media-icon'} />
                   Download CV
                 </Styled.SocialMediaLink>
+              )}
+
+              {!zoomIn && (
+                <Styled.ZoomToggleButton
+                  type="button"
+                  onClick={() => setZoomIn(true)}
+                  aria-label="Zoom in resume"
+                  title="Zoom in"
+                >
+                  <FiZoomIn />
+                  Zoom in
+                </Styled.ZoomToggleButton>
               )}
             </Styled.SocialLinksWrapper>
 
@@ -208,7 +245,8 @@ const Resume = (): JSX.Element => {
                 <Styled.EducationDetails key={id}>
                   <Styled.EduRow>
                     <span className="degree">
-                      {edu.degree}{edu.field ? ` — ${edu.field}` : ''}
+                      {edu.degree}
+                      {edu.field ? ` — ${edu.field}` : ''}
                     </span>
                     {edu.institution && (
                       <span className="institution">{edu.institution}</span>
@@ -219,8 +257,16 @@ const Resume = (): JSX.Element => {
                   </Styled.EduRow>
                   {(edu.cgpa || edu.percentage) && (
                     <Styled.EduMeta>
-                      {edu.cgpa && <span>CGPA: <strong>{edu.cgpa}</strong></span>}
-                      {edu.percentage && <span>Percentage: <strong>{edu.percentage}%</strong></span>}
+                      {edu.cgpa && (
+                        <span>
+                          CGPA: <strong>{edu.cgpa}</strong>
+                        </span>
+                      )}
+                      {edu.percentage && (
+                        <span>
+                          Percentage: <strong>{edu.percentage}%</strong>
+                        </span>
+                      )}
                     </Styled.EduMeta>
                   )}
                 </Styled.EducationDetails>
@@ -236,7 +282,6 @@ const Resume = (): JSX.Element => {
               ))}
             </>
           )}
-
         </Styled.RightColumn>
       </Styled.ResumeWrapper>
     </Styled.Container>
