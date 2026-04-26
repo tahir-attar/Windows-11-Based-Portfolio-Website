@@ -48,9 +48,9 @@ export const OrgName = styled.p`
 `;
 
 export const CertTitle = styled.h4`
-  color: inherit;
+  color: ${({ theme }) => theme.portfolio.resumeColors.lightText};
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: 700;
   margin: 0;
 `;
 
