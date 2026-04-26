@@ -1,6 +1,6 @@
 # ✨ Tahir Attar | Portfolio ✨
 
-#### 🔥 Try it online: [https://tahirattar.com/](https://tahir-attar.dev/)
+#### 🔥 Try it online: [https://tahirattar.dev/](https://tahir-attar.dev/)
 
 #### 🔥 If you really liked the project, consider giving it a star ⭐
 
