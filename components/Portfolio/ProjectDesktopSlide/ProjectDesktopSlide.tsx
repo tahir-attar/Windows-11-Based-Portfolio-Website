@@ -40,6 +40,8 @@ const ProjectDesktopSlide = ({
   }, [isElementVisible, isOnScreen]);
 
   const randomKey = `${~~Math.random() * 10000}${isOnScreen}`;
+  const hasLiveLink = Boolean(liveLink && liveLink.trim());
+  const hasGithubLink = Boolean(githubLink && githubLink.trim());
 
   return (
     <Styled.Container
@@ -90,9 +92,11 @@ const ProjectDesktopSlide = ({
             />
 
             <Styled.IconWrapper>
-              {(technologyIcons ?? renderTechIcons(techIconNames || [])).map((icon, id) => (
-                <Styled.Icon key={id}>{icon}</Styled.Icon>
-              ))}
+              {(technologyIcons ?? renderTechIcons(techIconNames || [])).map(
+                (icon, id) => (
+                  <Styled.Icon key={id}>{icon}</Styled.Icon>
+                )
+              )}
             </Styled.IconWrapper>
             <PortfolioParagraph
               margin={'2rem 0'}
@@ -101,22 +105,26 @@ const ProjectDesktopSlide = ({
               variant={'large'}
               withAnimatedPresence={true}
             />
-            <Styled.ButtonsWrapper>
-              <ActionButton
-                renderAsLink
-                href={liveLink}
-                buttonText={'Explore'}
-                icon={<FiCast className={'action-icon'} />}
-              />
-              {githubLink && (
-                <ActionButton
-                  renderAsLink
-                  href={githubLink}
-                  buttonText={'GitHub'}
-                  icon={<FiGithub className={'action-icon'} />}
-                />
-              )}
-            </Styled.ButtonsWrapper>
+            {(hasLiveLink || hasGithubLink) && (
+              <Styled.ButtonsWrapper>
+                {hasLiveLink && (
+                  <ActionButton
+                    renderAsLink
+                    href={liveLink}
+                    buttonText={'Explore'}
+                    icon={<FiCast className={'action-icon'} />}
+                  />
+                )}
+                {hasGithubLink && (
+                  <ActionButton
+                    renderAsLink
+                    href={githubLink}
+                    buttonText={'GitHub'}
+                    icon={<FiGithub className={'action-icon'} />}
+                  />
+                )}
+              </Styled.ButtonsWrapper>
+            )}
           </Styled.RightColumn>
         </>
       )}

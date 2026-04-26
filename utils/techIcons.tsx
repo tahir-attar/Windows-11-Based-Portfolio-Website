@@ -172,6 +172,8 @@ export const TECH_ICONS: TechIconOption[] = [
           height: '1em',
           objectFit: 'contain',
           display: 'inline-block',
+          filter:
+            'brightness(0) saturate(100%) invert(83%) sepia(84%) saturate(518%) hue-rotate(73deg) brightness(103%) contrast(104%) drop-shadow(0 0 2px rgba(43,255,136,0.85))',
         }}
         alt="javascript"
         onError={(e) => {
@@ -191,6 +193,8 @@ export const TECH_ICONS: TechIconOption[] = [
           height: '1em',
           objectFit: 'contain',
           display: 'inline-block',
+          filter:
+            'brightness(0) saturate(100%) invert(83%) sepia(84%) saturate(518%) hue-rotate(73deg) brightness(103%) contrast(104%) drop-shadow(0 0 2px rgba(43,255,136,0.85))',
         }}
         alt="typescript"
         onError={(e) => {
@@ -2894,6 +2898,8 @@ export const TECH_ICONS: TechIconOption[] = [
           height: '1em',
           objectFit: 'contain' as const,
           display: 'inline-block',
+          filter:
+            'brightness(0) saturate(100%) invert(83%) sepia(84%) saturate(518%) hue-rotate(73deg) brightness(103%) contrast(104%) drop-shadow(0 0 2px rgba(43,255,136,0.85))',
         }}
         alt="Hugging Face"
         onError={(e) => {
@@ -2914,6 +2920,8 @@ export const TECH_ICONS: TechIconOption[] = [
           height: '1em',
           objectFit: 'contain' as const,
           display: 'inline-block',
+          filter:
+            'brightness(0) saturate(100%) invert(83%) sepia(84%) saturate(518%) hue-rotate(73deg) brightness(103%) contrast(104%) drop-shadow(0 0 2px rgba(43,255,136,0.85))',
         }}
         alt="LangChain"
         onError={(e) => {
