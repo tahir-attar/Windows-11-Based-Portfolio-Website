@@ -29,13 +29,10 @@ This is a Windows 11-inspired portfolio that blends a desktop-style UI with a fu
 
 # At glance
 
-![home](./public/about/4.png)
-![home](./public/about/2.png)
-![home](./public/about/3.png)
-
-## License
-
-⚖️ MIT Copyright (c) 2026 Tahir Attar
+![home](./public/about/desktop-view.png)
+![home](./public/about/projects-page.png)
+![home](./public/about/comments.png)
+![home](./public/about/terminal-app.png)
 
 ## Features
 
@@ -145,29 +142,33 @@ Add your final screenshots in a folder such as public/screenshots and replace th
 
 ### Home and Desktop
 
-![Home Loader](./public/screenshots/home-loader.png)
-![Desktop View](./public/screenshots/desktop-view.png)
-![Desktop Mobile View](./public/screenshots/desktop-mobile-view.png)
+![Home Loader](./public/about/home-loader.png)
+![Desktop View](./public/about/desktop-view.png)
+![Desktop Mobile View](./public/about/desktop-mobile-view.png)
 
 ### Portfolio Sections
 
-![About Page](./public/screenshots/about-page.png)
-![Projects Page](./public/screenshots/projects-page.png)
-![Resume Page](./public/screenshots/resume-page.png)
-![Articles Page](./public/screenshots/articles-page.png)
-![Contact Page](./public/screenshots/contact-page.png)
+![About Page](./public/about/about-page.png)
+![Projects Page](./public/about/projects-page.png)
+![Resume Page](./public/about/resume-page.png)
+![Articles Page](./public/about/articles-page.png)
+![Contact Page](./public/about/contact-page.png)
 
 ### Widgets and Apps
 
-![Widgets Panel](./public/screenshots/widgets-panel.png)
-![Terminal App](./public/screenshots/terminal-app.png)
-![Browser App](./public/screenshots/browser-app.png)
+![Widgets Panel](./public/about/widgets-panel.png)
+![Terminal App](./public/about/terminal-app.png)
+![Browser App](./public/about/browser-app.png)
 
 ### Admin Panel
 
-![Admin Login](./public/screenshots/admin-login.png)
-![Admin Projects](./public/screenshots/admin-projects.png)
-![Admin Articles](./public/screenshots/admin-articles.png)
-![Admin Resume](./public/screenshots/admin-resume.png)
-![Admin About](./public/screenshots/admin-about.png)
-![Admin Comments](./public/screenshots/admin-comments.png)
+![Admin Login](./public/about/admin-login.png)
+![Admin Projects](./public/about/admin-projects.png)
+![Admin Articles](./public/about/admin-articles.png)
+![Admin Resume](./public/about/admin-resume.png)
+![Admin About](./public/about/admin-about.png)
+![Admin Comments](./public/about/admin-comments.png)
+
+## License
+
+⚖️ MIT Copyright (c) 2026 Tahir Attar
