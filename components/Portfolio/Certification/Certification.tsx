@@ -19,10 +19,12 @@ const Certification = (props: ICertification): JSX.Element => {
               }}
             />
           )}
-          <Styled.OrgName>{props.company}</Styled.OrgName>
-          {props.certificationName && (
-            <Styled.CertTitle>{props.certificationName}</Styled.CertTitle>
-          )}
+          <Styled.CertInfo>
+            <Styled.OrgName>{props.company}</Styled.OrgName>
+            {props.certificationName && (
+              <Styled.CertTitle>{props.certificationName}</Styled.CertTitle>
+            )}
+          </Styled.CertInfo>
         </Styled.CertName>
         <Styled.TimeFrame>{props.timeFrame}</Styled.TimeFrame>
       </Styled.Header>

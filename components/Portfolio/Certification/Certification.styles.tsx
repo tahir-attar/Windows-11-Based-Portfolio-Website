@@ -13,8 +13,8 @@ export const Header = styled.header`
 
 export const CertName = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 2px;
+  align-items: flex-start;
+  gap: 0.75rem;
   min-height: 2.75rem;
 `;
 
@@ -24,23 +24,33 @@ export const OrgLogo = styled.img`
   max-width: 6.5rem;
   max-height: 2.75rem;
   object-fit: contain;
-  margin-bottom: 4px;
+  flex-shrink: 0;
+`;
+
+export const CertInfo = styled.h4`
+  color: ${({ theme }) => theme.portfolio.resumeColors.accentColor};
+  font-size: 1rem;
+  margin: 0;
+  line-height: 1.2;
+  min-height: 2.75rem;
+
+  span {
+    display: block;
+    color: ${({ theme }) => theme.portfolio.resumeColors.lightText};
+  }
 `;
 
 export const OrgName = styled.p`
-  color: #2867b2;
-  font-size: 0.875rem;
+  color: inherit;
+  font-size: 1rem;
   font-weight: 600;
   margin: 0;
-  display: flex;
-  align-items: center;
-  gap: 6px;
 `;
 
 export const CertTitle = styled.h4`
-  color: ${({ theme }) => theme.portfolio.resumeColors.lightText};
+  color: inherit;
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 400;
   margin: 0;
 `;
 
@@ -48,7 +58,6 @@ export const TimeFrame = styled.time`
   font-weight: bold;
   color: ${({ theme }) => theme.portfolio.resumeColors.lightText};
   white-space: nowrap;
-  margin-left: 1rem;
 `;
 
 export const DescriptionRow = styled.div`
