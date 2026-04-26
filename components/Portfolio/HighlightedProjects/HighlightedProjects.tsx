@@ -16,11 +16,18 @@ interface Props {
 function buildProjectQuotes(project: IHighlightedProject): ICarouselQuote[] {
   const quotes: ICarouselQuote[] = [];
   if (project.projectTitle) {
-    quotes.push({ id: 0, title: project.projectTitle, quote: project.projectDescription });
+    quotes.push({
+      id: 0,
+      title: project.projectTitle,
+      quote: project.projectDescription,
+    });
   }
-  if (project.goal) quotes.push({ id: 1, title: 'The Goal', quote: project.goal });
-  if (project.role) quotes.push({ id: 2, title: 'My Role', quote: project.role });
-  if (project.outcome) quotes.push({ id: 3, title: 'The Outcome', quote: project.outcome });
+  if (project.goal)
+    quotes.push({ id: 1, title: 'The Goal', quote: project.goal });
+  if (project.role)
+    quotes.push({ id: 2, title: 'My Role', quote: project.role });
+  if (project.outcome)
+    quotes.push({ id: 3, title: 'The Outcome', quote: project.outcome });
   return quotes;
 }
 
@@ -45,7 +52,10 @@ const HighlightedProjects = ({ projects }: Props): JSX.Element => {
           />
         </Styled.HeroLeftColumn>
         <Styled.HeroRightColumn>
-          <Styled.ImageContainer position={{ top: '0', right: '0' }} className={'laptop-wrapper'}>
+          <Styled.ImageContainer
+            position={{ top: '0', right: '0' }}
+            className={'laptop-wrapper'}
+          >
             <Styled.FloatingImgContainer variant={'laptop'}>
               <Image
                 src={'/assets/portfolio/landing-laptop.png'}
@@ -59,10 +69,13 @@ const HighlightedProjects = ({ projects }: Props): JSX.Element => {
               />
             </Styled.FloatingImgContainer>
           </Styled.ImageContainer>
-          <Styled.ImageContainer position={{ top: '35%', right: '10px' }} className={'mobile-wrapper'}>
+          <Styled.ImageContainer
+            position={{ top: '35%', right: '10px' }}
+            className={'mobile-wrapper'}
+          >
             <Styled.FloatingImgContainer variant={'phone'}>
               <Image
-                src={'/assets/portfolio/landingphone.png'}
+                src={'/assets/portfolio/phone (2).png'}
                 quality={95}
                 height={450}
                 width={350}
@@ -74,7 +87,10 @@ const HighlightedProjects = ({ projects }: Props): JSX.Element => {
               />
             </Styled.FloatingImgContainer>
           </Styled.ImageContainer>
-          <Styled.ImageContainer position={{ bottom: '6rem', left: '0' }} className={'watch-wrapper'}>
+          <Styled.ImageContainer
+            position={{ bottom: '6rem', left: '0' }}
+            className={'watch-wrapper'}
+          >
             <Styled.FloatingImgContainer variant={'watch'}>
               <Image
                 src={'/assets/portfolio/landing-watch.png'}
