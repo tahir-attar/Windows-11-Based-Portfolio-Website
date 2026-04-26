@@ -31,9 +31,20 @@ const ProfessionalExperience = (props: Props): JSX.Element => {
   return (
     <Styled.Container>
       <Styled.Header>
-        <Styled.Company companyImg={props.companyImg}>
-          {props.company}
-          <Styled.Role>{props.role}</Styled.Role>
+        <Styled.Company>
+          {props.companyImg && (
+            <Styled.CompanyLogo
+              src={props.companyImg}
+              alt={props.company}
+              onError={(e) => {
+                (e.target as HTMLImageElement).style.display = 'none';
+              }}
+            />
+          )}
+          <Styled.CompanyInfo>
+            {props.company}
+            <Styled.Role>{props.role}</Styled.Role>
+          </Styled.CompanyInfo>
         </Styled.Company>
 
         <Styled.TimeFrame>{props.timeFrame}</Styled.TimeFrame>

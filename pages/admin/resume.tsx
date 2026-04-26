@@ -2182,8 +2182,9 @@ export default function AdminResume() {
                     <div
                       style={{
                         display: 'flex',
-                        alignItems: 'center',
+                        alignItems: 'flex-start',
                         gap: '8px',
+                        minHeight: '48px',
                       }}
                     >
                       {cert.companyImg && (
@@ -2191,8 +2192,10 @@ export default function AdminResume() {
                           src={cert.companyImg}
                           alt="logo"
                           style={{
-                            width: 32,
-                            height: 32,
+                            width: 'auto',
+                            height: 'auto',
+                            maxWidth: 96,
+                            maxHeight: 44,
                             objectFit: 'contain',
                             borderRadius: 4,
                             background: '#fff',

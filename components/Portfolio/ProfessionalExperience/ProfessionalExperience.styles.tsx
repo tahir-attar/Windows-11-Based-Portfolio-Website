@@ -6,26 +6,32 @@ export const Container = styled.article`
 export const Header = styled.header`
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
 `;
 
-interface Props {
-  companyImg: string;
-}
+export const Company = styled.div`
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  min-height: 2.75rem;
+`;
 
-export const Company = styled.h4<Props>`
+export const CompanyLogo = styled.img`
+  width: auto;
+  height: auto;
+  max-width: 6.5rem;
+  max-height: 2.75rem;
+  object-fit: contain;
+  flex-shrink: 0;
+`;
+
+export const CompanyInfo = styled.h4`
   color: ${({ theme }) => theme.portfolio.resumeColors.accentColor};
   font-size: 1rem;
-  position: relative;
-
-  &:before {
-    content: '';
-    display: block;
-    height: 1.5rem;
-    width: 1.5rem;
-    background-image: ${({ companyImg }) => `url(${companyImg})`};
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
+  margin: 0;
+  line-height: 1.2;
+  min-height: 2.75rem;
 
   span {
     display: block;
@@ -40,4 +46,5 @@ export const Role = styled.span`
 export const TimeFrame = styled.time`
   font-weight: bold;
   color: ${({ theme }) => theme.portfolio.resumeColors.lightText};
+  white-space: nowrap;
 `;

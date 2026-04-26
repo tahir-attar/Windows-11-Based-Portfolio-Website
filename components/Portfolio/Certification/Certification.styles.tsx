@@ -8,16 +8,27 @@ export const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  gap: 0.75rem;
 `;
 
 export const CertName = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2px;
+  min-height: 2.75rem;
+`;
+
+export const OrgLogo = styled.img`
+  width: auto;
+  height: auto;
+  max-width: 6.5rem;
+  max-height: 2.75rem;
+  object-fit: contain;
+  margin-bottom: 4px;
 `;
 
 export const OrgName = styled.p`
-  color: #2867B2;
+  color: #2867b2;
   font-size: 0.875rem;
   font-weight: 600;
   margin: 0;

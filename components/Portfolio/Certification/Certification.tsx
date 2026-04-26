@@ -11,15 +11,18 @@ const Certification = (props: ICertification): JSX.Element => {
       <Styled.Header>
         <Styled.CertName>
           {props.companyImg && (
-            <img
+            <Styled.OrgLogo
               src={props.companyImg}
               alt={props.company}
-              style={{ width: 32, height: 32, objectFit: 'contain', marginBottom: '4px' }}
-              onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+              onError={(e) => {
+                (e.target as HTMLImageElement).style.display = 'none';
+              }}
             />
           )}
           <Styled.OrgName>{props.company}</Styled.OrgName>
-          {props.certificationName && <Styled.CertTitle>{props.certificationName}</Styled.CertTitle>}
+          {props.certificationName && (
+            <Styled.CertTitle>{props.certificationName}</Styled.CertTitle>
+          )}
         </Styled.CertName>
         <Styled.TimeFrame>{props.timeFrame}</Styled.TimeFrame>
       </Styled.Header>
@@ -34,7 +37,11 @@ const Certification = (props: ICertification): JSX.Element => {
             withAnimatedPresence={false}
           />
           {props.url && (
-            <Styled.CredentialLink href={props.url} target="_blank" rel="noopener noreferrer">
+            <Styled.CredentialLink
+              href={props.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FiExternalLink />
               View
             </Styled.CredentialLink>
