@@ -75,7 +75,7 @@ const HighlightedProjects = ({ projects }: Props): JSX.Element => {
           >
             <Styled.FloatingImgContainer variant={'phone'}>
               <Image
-                src={'/assets/portfolio/phone (2).png'}
+                src={'/assets/portfolio/phone-2.png'}
                 quality={95}
                 height={450}
                 width={350}
