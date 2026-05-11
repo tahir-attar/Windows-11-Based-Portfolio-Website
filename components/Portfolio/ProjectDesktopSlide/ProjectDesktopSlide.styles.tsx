@@ -116,7 +116,8 @@ export const RightColumn = styled.div`
 
   @media ${({ theme }) => theme.media.tablet} {
     width: 100%;
-    height: 40%;
+    height: auto;
+    min-height: 40%;
     padding: 1rem;
     justify-content: flex-start;
     h1 {
@@ -128,7 +129,7 @@ export const RightColumn = styled.div`
     }
   }
   @media ${({ theme }) => theme.media.phone} {
-    height: 55%;
+    min-height: auto;
   }
 `;
 
@@ -151,7 +152,8 @@ export const Icon = styled.li`
     object-fit: contain;
     display: inline-block;
     /* Filter properly generated to match #2bff88 */
-    filter: brightness(0) saturate(100%) invert(84%) sepia(55%) saturate(3062%) hue-rotate(85deg) brightness(105%) contrast(105%);
+    filter: brightness(0) saturate(100%) invert(84%) sepia(55%) saturate(3062%)
+      hue-rotate(85deg) brightness(105%) contrast(105%);
   }
 
   @media ${({ theme }) => theme.media.phone} {
@@ -171,6 +173,7 @@ export const ButtonsWrapper = styled.div`
   justify-content: center;
   gap: 2rem;
   margin-top: 1rem;
+  flex-wrap: wrap;
 
   a {
     width: 280px;
@@ -184,7 +187,9 @@ export const ButtonsWrapper = styled.div`
   @media ${({ theme }) => theme.media.phone} {
     gap: 1rem;
     a {
-      width: 50%;
+      width: calc(50% - 0.5rem);
+      min-width: 130px;
+      white-space: nowrap;
     }
   }
 `;

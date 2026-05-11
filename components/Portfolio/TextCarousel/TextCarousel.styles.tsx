@@ -14,7 +14,11 @@ export const Container = styled.div`
 `;
 
 export const TextWrapper = styled.div`
-  height: 40%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 0;
 
   p {
     line-height: 1.6;
@@ -67,10 +71,12 @@ export const PrevQuote = styled.button`
 export const ControlsWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
-  margin-top: 4rem;
+  gap: 1rem;
+  margin-top: auto;
+  padding-top: 2rem;
   animation: ${slideTop} 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 
   @media ${({ theme }) => theme.media.phone} {
-    margin-top: 2rem;
+    padding-top: 1rem;
   }
 `;
