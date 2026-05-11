@@ -7,7 +7,6 @@ export const Container = styled.div`
   justify-content: center;
   height: 100%;
   padding: 1rem 5rem;
-  position: relative;
   @media ${({ theme }) => theme.media.tablet} {
     padding: 1rem;
     justify-content: flex-start;
@@ -73,17 +72,11 @@ export const ControlsWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
   gap: 1rem;
-  position: absolute;
-  bottom: 2rem;
-  right: 5rem;
+  margin-top: auto;
+  padding-top: 2rem;
   animation: ${slideTop} 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 
-  @media ${({ theme }) => theme.media.tablet} {
-    right: 1rem;
-    bottom: 1rem;
-  }
   @media ${({ theme }) => theme.media.phone} {
-    right: 1rem;
-    bottom: 0.5rem;
+    padding-top: 1rem;
   }
 `;

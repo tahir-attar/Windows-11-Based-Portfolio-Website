@@ -13,7 +13,6 @@ export interface Props {
   mobileImgWidth?: number | null;
   mobileImgHeight?: number | null;
   detailsImg?: string;
-  hideArrows?: boolean;
 }
 
 const ProjectDetailsSlide = ({
@@ -25,24 +24,16 @@ const ProjectDetailsSlide = ({
   mobileImgWidth,
   mobileImgHeight,
   detailsImg,
-  hideArrows = false,
 }: Props): JSX.Element => {
   const imgSrc = detailsImg || projectMobileImg;
   const containerRef = useRef<HTMLDivElement>(null);
-  const figureRef = useRef<HTMLDivElement>(null);
   const [isElementVisible] = useIntersectionObserver(containerRef, {
     threshold: 0.5,
   });
   const [isOnScreen, setIsOnScreen] = useState(false);
-  const [isTapped, setIsTapped] = useState(false);
-
   useEffect(() => {
     if (isElementVisible && !isOnScreen) setIsOnScreen(true);
   }, [isElementVisible, isOnScreen]);
-
-  const handleFigureTap = () => {
-    setIsTapped(!isTapped);
-  };
 
   const randomKey = `${~~Math.random() * 10000}${isOnScreen}`;
 
@@ -56,18 +47,12 @@ const ProjectDetailsSlide = ({
       {isOnScreen && (
         <>
           <Styled.RightColumn>
-            <TextCarousel quotes={projectQuotes} hideArrows={hideArrows} />
+            <TextCarousel quotes={projectQuotes} />
           </Styled.RightColumn>
 
           <Styled.LeftColumn>
             <Styled.LevitatingWrapper>
-              <Styled.Figure
-                ref={figureRef}
-                figureWidth={mobileImgWidth ?? undefined}
-                figureHeight={mobileImgHeight ?? undefined}
-                isTapped={isTapped}
-                onClick={handleFigureTap}
-              >
+              <Styled.Figure figureWidth={mobileImgWidth ?? undefined} figureHeight={mobileImgHeight ?? undefined}>
                 {[1, 2, 3, 4].map((id) => (
                   <img key={id} src={imgSrc} alt={projectName} />
                 ))}

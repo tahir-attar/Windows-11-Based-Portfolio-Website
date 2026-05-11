@@ -109,7 +109,7 @@ const HighlightedProjects = ({ projects }: Props): JSX.Element => {
         <ScrollHint />
       </Styled.ProjectsHero>
 
-      {projects.map((project, index) => (
+      {projects.map((project) => (
         <React.Fragment key={project.id ?? project.projectTitle}>
           <ProjectDesktopSlide {...project} />
           {(project.role || project.goal || project.outcome) && (
@@ -122,7 +122,6 @@ const HighlightedProjects = ({ projects }: Props): JSX.Element => {
               mobileImgWidth={project.mobileImgWidth}
               mobileImgHeight={project.mobileImgHeight}
               detailsImg={project.detailsImg}
-              hideArrows={index === 2}
             />
           )}
         </React.Fragment>

@@ -12,7 +12,6 @@ interface Props {
 interface FigureProps {
   figureWidth?: number;
   figureHeight?: number;
-  isTapped?: boolean;
 }
 
 export const Container = styled.section<Props>`
@@ -55,7 +54,6 @@ export const Figure = styled.figure<FigureProps>`
     figureHeight ? `${figureHeight}px` : '580px'};
   transform: rotate(-30deg) skew(25deg) scale(0.8);
   transition: 0.5s;
-  cursor: pointer;
 
   img {
     position: absolute;
@@ -65,26 +63,22 @@ export const Figure = styled.figure<FigureProps>`
     filter: drop-shadow(-8px 5px 2px #00254d);
   }
 
-  :hover img:nth-child(4),
-  ${({ isTapped }) => isTapped && `img:nth-child(4)`} {
+  :hover img:nth-child(4) {
     transform: translate(160px, -160px);
     opacity: 1;
   }
 
-  :hover img:nth-child(3),
-  ${({ isTapped }) => isTapped && `img:nth-child(3)`} {
+  :hover img:nth-child(3) {
     transform: translate(120px, -120px);
     opacity: 0.8;
   }
 
-  :hover img:nth-child(2),
-  ${({ isTapped }) => isTapped && `img:nth-child(2)`} {
+  :hover img:nth-child(2) {
     transform: translate(80px, -80px);
     opacity: 0.6;
   }
 
-  :hover img:nth-child(1),
-  ${({ isTapped }) => isTapped && `img:nth-child(1)`} {
+  :hover img:nth-child(1) {
     transform: translate(40px, -40px);
     opacity: 0.4;
   }
