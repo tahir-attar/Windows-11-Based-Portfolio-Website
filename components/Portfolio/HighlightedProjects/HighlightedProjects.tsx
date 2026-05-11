@@ -122,7 +122,7 @@ const HighlightedProjects = ({ projects }: Props): JSX.Element => {
               mobileImgWidth={project.mobileImgWidth}
               mobileImgHeight={project.mobileImgHeight}
               detailsImg={project.detailsImg}
-              hideArrows={index !== 2}
+              hideArrows={index === 2}
             />
           )}
         </React.Fragment>
