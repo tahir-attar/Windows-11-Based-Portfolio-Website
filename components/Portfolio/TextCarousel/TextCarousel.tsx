@@ -7,15 +7,17 @@ import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
 export interface Props {
   quotes: ICarouselQuote[];
+  hideArrows?: boolean;
 }
 
 /**
  *Renders carousel with text quotes
  *@function TextCarousel
  *@param {ICarouselQuote[]} quotes - array of quotes with title and text of quote
+ *@param {boolean} hideArrows - whether to hide navigation arrows
  *@returns {JSX.Element} - Rendered TextCarousel component
  */
-const TextCarousel = ({ quotes }: Props): JSX.Element => {
+const TextCarousel = ({ quotes, hideArrows = false }: Props): JSX.Element => {
   const [quoteID, setQuoteID] = useState(0);
   const [intervalID, setIntervalID] = useState<NodeJS.Timer | null>(null);
 
@@ -67,14 +69,19 @@ const TextCarousel = ({ quotes }: Props): JSX.Element => {
           withAnimatedPresence={true}
         />
       </Styled.TextWrapper>
-      <Styled.ControlsWrapper>
-        <Styled.PrevQuote onClick={proceedToPrevQuote} title="Previous Slide">
-          <FiChevronLeft className={'carousel-icon prev'} />
-        </Styled.PrevQuote>
-        <Styled.NextQuote onClick={proceedToNextQuote}>
-          <FiChevronRight className={'carousel-icon next'} title="Next Slide" />
-        </Styled.NextQuote>
-      </Styled.ControlsWrapper>
+      {!hideArrows && (
+        <Styled.ControlsWrapper>
+          <Styled.PrevQuote onClick={proceedToPrevQuote} title="Previous Slide">
+            <FiChevronLeft className={'carousel-icon prev'} />
+          </Styled.PrevQuote>
+          <Styled.NextQuote onClick={proceedToNextQuote}>
+            <FiChevronRight
+              className={'carousel-icon next'}
+              title="Next Slide"
+            />
+          </Styled.NextQuote>
+        </Styled.ControlsWrapper>
+      )}
     </Styled.Container>
   );
 };
