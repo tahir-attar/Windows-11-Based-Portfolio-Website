@@ -12,7 +12,6 @@ interface Props {
 interface FigureProps {
   figureWidth?: number;
   figureHeight?: number;
-  isTapped?: boolean;
 }
 
 export const Container = styled.section<Props>`
@@ -37,10 +36,8 @@ export const LeftColumn = styled.div`
   animation-delay: 500ms;
   @media ${({ theme }) => theme.media.tablet} {
     width: 100%;
-    height: auto;
-    min-height: 45%;
+    height: 50%;
     align-items: flex-start;
-    padding: 1rem 0;
   }
 `;
 
@@ -55,7 +52,6 @@ export const Figure = styled.figure<FigureProps>`
     figureHeight ? `${figureHeight}px` : '580px'};
   transform: rotate(-30deg) skew(25deg) scale(0.8);
   transition: 0.5s;
-  cursor: pointer;
 
   img {
     position: absolute;
@@ -65,26 +61,22 @@ export const Figure = styled.figure<FigureProps>`
     filter: drop-shadow(-8px 5px 2px #00254d);
   }
 
-  :hover img:nth-child(4),
-  ${({ isTapped }) => isTapped && `img:nth-child(4)`} {
+  :hover img:nth-child(4) {
     transform: translate(160px, -160px);
     opacity: 1;
   }
 
-  :hover img:nth-child(3),
-  ${({ isTapped }) => isTapped && `img:nth-child(3)`} {
+  :hover img:nth-child(3) {
     transform: translate(120px, -120px);
     opacity: 0.8;
   }
 
-  :hover img:nth-child(2),
-  ${({ isTapped }) => isTapped && `img:nth-child(2)`} {
+  :hover img:nth-child(2) {
     transform: translate(80px, -80px);
     opacity: 0.6;
   }
 
-  :hover img:nth-child(1),
-  ${({ isTapped }) => isTapped && `img:nth-child(1)`} {
+  :hover img:nth-child(1) {
     transform: translate(40px, -40px);
     opacity: 0.4;
   }
@@ -104,11 +96,6 @@ export const RightColumn = styled.div`
   width: 50%;
   @media ${({ theme }) => theme.media.tablet} {
     width: 100%;
-    height: auto;
-    min-height: 55%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 1rem;
+    height: 50%;
   }
 `;

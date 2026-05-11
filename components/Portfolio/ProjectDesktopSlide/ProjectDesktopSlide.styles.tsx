@@ -28,17 +28,14 @@ export const LeftColumn = styled.div`
 
   @media ${({ theme }) => theme.media.tablet} {
     width: 100%;
-    padding: 0.5rem;
-    height: auto;
-    min-height: 35%;
+    padding: 1rem;
+    height: 60%;
     align-items: flex-end;
   }
   @media ${({ theme }) => theme.media.phone} {
-    height: auto;
-    min-height: 30%;
+    height: 45%;
     align-items: flex-end;
     justify-content: flex-end;
-    padding: 0.5rem 0.25rem;
   }
 `;
 export const ImageWrapper = styled.div`
@@ -119,29 +116,22 @@ export const RightColumn = styled.div`
 
   @media ${({ theme }) => theme.media.tablet} {
     width: 100%;
-    height: auto;
-    min-height: 65%;
-    padding: 0.75rem;
+    height: 40%;
+    padding: 1rem;
     justify-content: flex-start;
     h1 {
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
+      font-size: 2rem;
+      letter-spacing: 0.05em;
     }
 
     p {
-      margin: 0.5rem 0;
-      font-size: 0.9rem;
+      margin: 1rem 0;
     }
   }
   @media ${({ theme }) => theme.media.phone} {
-    min-height: auto;
+    height: 55%;
     h1 {
-      font-size: 1.25rem;
-      margin-bottom: 0.25rem;
-    }
-    p {
-      margin: 0.25rem 0;
-      font-size: 0.85rem;
+      letter-spacing: 0.05em;
     }
   }
 `;
@@ -152,11 +142,6 @@ export const IconWrapper = styled.ul`
   justify-content: center;
   gap: 1rem;
   animation: ${slideTop} 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  flex-wrap: wrap;
-
-  @media ${({ theme }) => theme.media.phone} {
-    gap: 0.5rem;
-  }
 `;
 export const Icon = styled.li`
   .tech-icon {
@@ -176,12 +161,12 @@ export const Icon = styled.li`
 
   @media ${({ theme }) => theme.media.phone} {
     .tech-icon {
-      font-size: 1.25rem;
+      font-size: 1.5rem;
     }
 
     img.tech-icon {
-      width: 1.25rem;
-      height: 1.25rem;
+      width: 1.5rem;
+      height: 1.5rem;
     }
   }
 `;
@@ -191,7 +176,6 @@ export const ButtonsWrapper = styled.div`
   justify-content: center;
   gap: 2rem;
   margin-top: 1rem;
-  flex-wrap: wrap;
 
   a {
     width: 280px;
@@ -202,25 +186,10 @@ export const ButtonsWrapper = styled.div`
     animation-delay: 250ms;
   }
 
-  @media ${({ theme }) => theme.media.tablet} {
-    gap: 0.75rem;
-    margin-top: 0.5rem;
-    a {
-      width: calc(50% - 0.375rem);
-      min-width: 120px;
-      padding: 0.5rem 1rem;
-      font-size: 0.9rem;
-    }
-  }
-
   @media ${({ theme }) => theme.media.phone} {
-    gap: 0.5rem;
-    margin-top: 0.25rem;
+    gap: 1rem;
     a {
-      width: calc(50% - 0.25rem);
-      min-width: 100px;
-      padding: 0.4rem 0.75rem;
-      font-size: 0.8rem;
+      width: 50%;
     }
   }
 `;

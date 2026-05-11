@@ -7,7 +7,6 @@ export const Container = styled.div`
   justify-content: center;
   height: 100%;
   padding: 1rem 5rem;
-  position: relative;
   @media ${({ theme }) => theme.media.tablet} {
     padding: 1rem;
     justify-content: flex-start;
@@ -26,17 +25,20 @@ export const TextWrapper = styled.div`
   }
 
   h1 {
-    letter-spacing: -3px;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
   }
 
   @media ${({ theme }) => theme.media.tablet} {
     height: auto;
     h1 {
-      font-size: 2rem;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
     }
 
     p {
       line-height: 1.4;
+      font-size: 0.9rem;
     }
   }
 `;
@@ -73,17 +75,13 @@ export const ControlsWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
   gap: 1rem;
-  position: absolute;
-  bottom: 2rem;
-  right: 5rem;
+  margin-top: 2rem;
   animation: ${slideTop} 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 
   @media ${({ theme }) => theme.media.tablet} {
-    right: 1rem;
-    bottom: 1rem;
+    margin-top: 1.5rem;
   }
   @media ${({ theme }) => theme.media.phone} {
-    right: 1rem;
-    bottom: 0.5rem;
+    margin-top: 1rem;
   }
 `;
