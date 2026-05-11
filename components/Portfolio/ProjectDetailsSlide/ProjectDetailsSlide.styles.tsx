@@ -36,10 +36,8 @@ export const LeftColumn = styled.div`
   animation-delay: 500ms;
   @media ${({ theme }) => theme.media.tablet} {
     width: 100%;
-    height: auto;
-    min-height: 45%;
+    height: 50%;
     align-items: flex-start;
-    padding: 1rem 0;
   }
 `;
 
@@ -50,8 +48,7 @@ export const LevitatingWrapper = styled.div`
 export const Figure = styled.figure<FigureProps>`
   position: relative;
   width: ${({ figureWidth }) => (figureWidth ? `${figureWidth}px` : '300px')};
-  height: ${({ figureHeight }) =>
-    figureHeight ? `${figureHeight}px` : '580px'};
+  height: ${({ figureHeight }) => (figureHeight ? `${figureHeight}px` : '580px')};
   transform: rotate(-30deg) skew(25deg) scale(0.8);
   transition: 0.5s;
 
@@ -98,11 +95,6 @@ export const RightColumn = styled.div`
   width: 50%;
   @media ${({ theme }) => theme.media.tablet} {
     width: 100%;
-    height: auto;
-    min-height: 55%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 1rem;
+    height: 50%;
   }
 `;
