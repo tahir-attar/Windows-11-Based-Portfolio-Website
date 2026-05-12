@@ -88,7 +88,7 @@ export const Figure = styled.figure<FigureProps>`
   @media ${({ theme }) => theme.media.phone} {
     width: 200px;
     height: 480px;
-    transform: rotate(-35deg) skew(25deg) scale(0.9);
+    transform: rotate(-35deg) skew(25deg) scale(0.75);
     img {
       left: -10px;
       top: 50px;
