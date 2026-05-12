@@ -155,7 +155,14 @@ export const BTN = styled.button<Props>`
   }
 
   @media ${({ theme }) => theme.media.phone} {
-    padding: 1rem 2rem;
+    padding: 1rem 1.5rem;
     font-size: 1rem;
+    gap: 0.5rem;
+
+    span {
+      position: relative;
+      right: 0;
+      transform: none;
+    }
   }
 `;

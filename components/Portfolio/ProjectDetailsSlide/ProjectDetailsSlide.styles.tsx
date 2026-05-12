@@ -24,6 +24,9 @@ export const Container = styled.section<Props>`
 
   @media ${({ theme }) => theme.media.tablet} {
     flex-direction: column-reverse;
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
   }
 `;
 
@@ -36,7 +39,8 @@ export const LeftColumn = styled.div`
   animation-delay: 500ms;
   @media ${({ theme }) => theme.media.tablet} {
     width: 100%;
-    height: 50%;
+    height: auto;
+    min-height: 40vh;
     align-items: flex-start;
   }
 `;
@@ -48,7 +52,8 @@ export const LevitatingWrapper = styled.div`
 export const Figure = styled.figure<FigureProps>`
   position: relative;
   width: ${({ figureWidth }) => (figureWidth ? `${figureWidth}px` : '300px')};
-  height: ${({ figureHeight }) => (figureHeight ? `${figureHeight}px` : '580px')};
+  height: ${({ figureHeight }) =>
+    figureHeight ? `${figureHeight}px` : '580px'};
   transform: rotate(-30deg) skew(25deg) scale(0.8);
   transition: 0.5s;
 
@@ -83,7 +88,7 @@ export const Figure = styled.figure<FigureProps>`
   @media ${({ theme }) => theme.media.phone} {
     width: 200px;
     height: 480px;
-    transform: rotate(-35deg) skew(25deg) scale(0.65);
+    transform: rotate(-35deg) skew(25deg) scale(0.9);
     img {
       left: -10px;
       top: 50px;
@@ -95,6 +100,7 @@ export const RightColumn = styled.div`
   width: 50%;
   @media ${({ theme }) => theme.media.tablet} {
     width: 100%;
-    height: 50%;
+    height: auto;
+    min-height: 40vh;
   }
 `;

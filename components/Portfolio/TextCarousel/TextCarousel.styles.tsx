@@ -10,11 +10,12 @@ export const Container = styled.div`
   @media ${({ theme }) => theme.media.tablet} {
     padding: 1rem;
     justify-content: flex-start;
+    height: auto;
   }
 `;
 
 export const TextWrapper = styled.div`
-  height: 40%;
+  height: auto;
 
   p {
     line-height: 1.6;
@@ -25,7 +26,6 @@ export const TextWrapper = styled.div`
   }
 
   @media ${({ theme }) => theme.media.tablet} {
-    height: auto;
     h1 {
       font-size: 2rem;
     }

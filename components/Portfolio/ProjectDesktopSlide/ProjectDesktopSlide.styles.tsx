@@ -13,6 +13,8 @@ export const Container = styled.section<ContainerProps>`
 
   @media ${({ theme }) => theme.media.tablet} {
     flex-direction: column;
+    height: auto;
+    min-height: 100vh;
   }
 `;
 
@@ -29,11 +31,13 @@ export const LeftColumn = styled.div`
   @media ${({ theme }) => theme.media.tablet} {
     width: 100%;
     padding: 1rem;
-    height: 60%;
+    height: auto;
+    min-height: 40vh;
     align-items: flex-end;
   }
   @media ${({ theme }) => theme.media.phone} {
-    height: 45%;
+    height: auto;
+    min-height: 45vh;
     align-items: flex-end;
     justify-content: flex-end;
   }
@@ -116,8 +120,8 @@ export const RightColumn = styled.div`
 
   @media ${({ theme }) => theme.media.tablet} {
     width: 100%;
-    height: 40%;
-    padding: 1rem;
+    height: auto;
+    padding: 1rem 1rem 3rem 1rem;
     justify-content: flex-start;
     h1 {
       font-size: 2rem;
@@ -128,7 +132,7 @@ export const RightColumn = styled.div`
     }
   }
   @media ${({ theme }) => theme.media.phone} {
-    height: 55%;
+    height: auto;
   }
 `;
 
@@ -151,7 +155,8 @@ export const Icon = styled.li`
     object-fit: contain;
     display: inline-block;
     /* Filter properly generated to match #2bff88 */
-    filter: brightness(0) saturate(100%) invert(84%) sepia(55%) saturate(3062%) hue-rotate(85deg) brightness(105%) contrast(105%);
+    filter: brightness(0) saturate(100%) invert(84%) sepia(55%) saturate(3062%)
+      hue-rotate(85deg) brightness(105%) contrast(105%);
   }
 
   @media ${({ theme }) => theme.media.phone} {

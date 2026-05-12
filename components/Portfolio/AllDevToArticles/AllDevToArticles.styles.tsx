@@ -82,6 +82,16 @@ export const List = styled.ul`
 
 export const LI = styled.li``;
 
+export const EmptyMessage = styled.h3`
+  text-align: center;
+  color: ${({ theme }) => theme.portfolio.primaryColor.light};
+  font-size: 1.5rem;
+  margin-top: 6rem;
+  padding: 2rem;
+  width: 100%;
+  grid-column: 1 / -1;
+`;
+
 export const FiltersToggler = styled.button`
   z-index: ${({ theme }) => theme.zIndex.lowPriority};
   position: absolute;

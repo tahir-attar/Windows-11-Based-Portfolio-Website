@@ -9,6 +9,10 @@ export const Container = styled.section`
   height: 100vh;
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
+
+  @media ${({ theme }) => theme.media.tablet} {
+    scroll-snap-type: none;
+  }
 `;
 
 export const ProjectsHero = styled.div`

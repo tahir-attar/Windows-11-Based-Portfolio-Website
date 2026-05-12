@@ -95,11 +95,17 @@ const AllDevToArticles = (): JSX.Element => {
         </Styled.FiltersToggler>
         <ArtcileFiltersMenu isMenuVisible={showFiltersMenu} />
         <Styled.List>
-          {displayedArticles.map((article) => (
-            <Styled.LI key={article.id + article.title}>
-              <DevToArticle {...article} />
-            </Styled.LI>
-          ))}
+          {displayedArticles.length === 0 ? (
+            <Styled.EmptyMessage>
+              No articles found. Please check back later!
+            </Styled.EmptyMessage>
+          ) : (
+            displayedArticles.map((article) => (
+              <Styled.LI key={article.id + article.title}>
+                <DevToArticle {...article} />
+              </Styled.LI>
+            ))
+          )}
         </Styled.List>
       </Styled.SecondSlide>
     </Styled.Container>
